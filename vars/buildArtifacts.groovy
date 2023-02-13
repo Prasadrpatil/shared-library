@@ -62,6 +62,7 @@ def call(Map config = [:]) {
         case 'node':
             switch (config.artifactType) {
                 case 'js':
+                    sh "npm install"
                     sh "npm run build"
                     break
                 default:
