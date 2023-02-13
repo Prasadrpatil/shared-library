@@ -42,7 +42,7 @@ def call(Map config = [:]) {
                     sh "dotnet build -c Release"
                     break
                 case 'dll':
-                    sh "dotnet build -c Release -r linux-x64"
+                    sh "dotnet build -c Release"
                     break
                 default:
                     println "Error: Invalid artifact type. Must be 'exe' or 'dll'."
