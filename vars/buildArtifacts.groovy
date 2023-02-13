@@ -36,7 +36,19 @@ def call(Map config = [:]) {
                     println "Error: Invalid artifact type. Must be 'jar' or 'war'."
             }
             break
+        case 'dotnet':
+            switch (config.artifactType) {
+                case 'exe':
+                    sh "dotnet build -c Release -r linux-x64"
+                    break
+                case 'dll':
+                    sh "dotnet build -c Release -r linux-x64"
+                    break
+                default:
+                    println "Error: Invalid artifact type. Must be 'exe' or 'dll'."
+            }
+            break
         default:
-            println "Error: Invalid build tool. Must be 'maven', 'gradle', or 'ant'."
+            println "Error: Invalid build tool. Must be 'maven', 'gradle', 'ant', or 'dotnet'."
     }
 }
