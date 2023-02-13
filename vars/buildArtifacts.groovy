@@ -39,7 +39,7 @@ def call(Map config = [:]) {
         case 'dotnet':
             switch (config.artifactType) {
                 case 'exe':
-                    sh "dotnet build -c Release -r linux-x64"
+                    sh "dotnet build -c Release"
                     break
                 case 'dll':
                     sh "dotnet build -c Release -r linux-x64"
