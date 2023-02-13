@@ -1,49 +1,62 @@
 def call(Map config = [:]) {
-    switch (config.buildTool) {
-        case 'maven':
-            switch (config.artifactType) {
-                case 'jar':
-                    sh "mvn clean install -Dmaven.test.skip=true"
+    switch (config.technology) {
+        case 'java':
+            switch (config.buildTool) {
+                case 'maven':
+                    switch (config.artifactType) {
+                        case 'jar':
+                            sh "mvn clean install -Dmaven.test.skip=true"
+                            break
+                        case 'war':
+                            sh "mvn clean install -Dmaven.test.skip=true -P war"
+                            break
+                        default:
+                            println "Error: Invalid artifact type. Must be 'jar' or 'war'."
+                            break
+                    }
                     break
-                case 'war':
-                    sh "mvn clean install -Dmaven.test.skip=true -P war"
+                case 'gradle':
+                    switch (config.artifactType) {
+                        case 'jar':
+                            sh "gradle build"
+                            break
+                        case 'war':
+                            sh "gradle war"
+                            break
+                        default:
+                            println "Error: Invalid artifact type. Must be 'jar' or 'war'."
+                            break
+                    }
+                    break
+                case 'ant':
+                    switch (config.artifactType) {
+                        case 'jar':
+                            sh "ant jar"
+                            break
+                        case 'war':
+                            sh "ant war"
+                            break
+                        default:
+                            println "Error: Invalid artifact type. Must be 'jar' or 'war'."
+                            break
+                    }
                     break
                 default:
-                    println "Error: Invalid artifact type. Must be 'jar' or 'war'."
+                    println "Error: Invalid build tool. Must be 'maven', 'gradle', or 'ant'."
+                    break
             }
             break
-        case 'gradle':
+        case '.net':
             switch (config.artifactType) {
-                case 'jar':
-                    sh "gradle build"
-                    break
-                case 'war':
-                    sh "gradle war"
-                    break
-                default:
-                    println "Error: Invalid artifact type. Must be 'jar' or 'war'."
-            }
-            break
-        case 'ant':
-            switch (config.artifactType) {
-                case 'jar':
-                    sh "ant jar"
-                    break
-                case 'war':
-                    sh "ant war"
-                    break
-                default:
-                    println "Error: Invalid artifact type. Must be 'jar' or 'war'."
-            }
-            break
-        case 'dotnet':
-            switch (config.artifactType) {
-                case 'exe':
                 case 'dll':
-                    sh "dotnet build -c Release -r linux-x64"
+                    sh "dotnet build"
+                    break
+                case 'exe':
+                    sh "dotnet publish -c Release"
                     break
                 default:
-                    println "Error: Invalid artifact type. Must be 'exe' or 'dll'."
+                    println "Error: Invalid artifact type. Must be 'dll' or 'exe'."
+                    break
             }
             break
         case 'node':
@@ -53,9 +66,11 @@ def call(Map config = [:]) {
                     break
                 default:
                     println "Error: Invalid artifact type. Must be 'js'."
+                    break
             }
             break
         default:
-            println "Error: Invalid build tool. Must be 'maven', 'gradle', 'ant', 'dotnet', or 'node'."
+            println "Error: Invalid technology. Must be 'java', '.net', or 'node'."
+            break
     }
 }
