@@ -60,13 +60,31 @@ def call(Map config = [:]) {
             }
             break
         case 'node':
-            switch (config.artifactType) {
-                case 'js':
-                    sh "npm install"
-                    sh "npm run build"
+            switch (config.buildTool) {
+                case 'npm':
+                    switch (config.artifactType) {
+                        case 'js':
+                            sh "npm install"
+                            sh "npm run build"
+                            break
+                        default:
+                            println "Error: Invalid artifact type. Must be 'js'."
+                            break
+                    }
+                    break
+                case 'yarn':
+                    switch (config.artifactType) {
+                        case 'js':
+                            sh "yarn install"
+                            sh "yarn run build"
+                            break
+                        default:
+                            println "Error: Invalid artifact type. Must be 'js'."
+                            break
+                    }
                     break
                 default:
-                    println "Error: Invalid artifact type. Must be 'js'."
+                    println "Error: Invalid build tool. Must be 'npm' or 'yarn'."
                     break
             }
             break
