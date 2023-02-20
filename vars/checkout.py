@@ -9,4 +9,4 @@ args = parser.parse_args()
 # repo_url = 'https://github.com/Prasadrpatil/java-calculator.git'
 # directory = '/repo'
 
-repo = git.Repo.clone_from('https://github.com/Prasadrpatil/java-calculator', '/var/lib/jenkins/workspace/Devsecops-Pipeline')
+repo = git.Repo.clone_from('https://github.com/Prasadrpatil/java-calculator', '/var/lib/jenkins/workspace/Devsecops-Pipeline/repo')
