@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import git
 
 repo_url = 'https://github.com/Prasadrpatil/java-calculator.git'
