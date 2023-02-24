@@ -89,7 +89,7 @@ def call(Map config = [:]) {
             }
             break
         default:
-            println "Error: Invalid technology. Must be 'java', '.net', or 'node'."
+            error "Error: Invalid technology. Must be 'java', '.net', or 'node'."
             break
     }
 }
