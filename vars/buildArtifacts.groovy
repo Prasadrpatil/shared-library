@@ -24,7 +24,7 @@ def call(Map config = [:]) {
                             sh "gradle war"
                             break
                         default:
-                            println "Error: Invalid artifact type. Must be 'jar' or 'war'."
+                            error "Error: Invalid artifact type. Must be 'jar' or 'war'."
                             break
                     }
                     break
@@ -37,12 +37,12 @@ def call(Map config = [:]) {
                             sh "ant war"
                             break
                         default:
-                            println "Error: Invalid artifact type. Must be 'jar' or 'war'."
+                            error "Error: Invalid artifact type. Must be 'jar' or 'war'."
                             break
                     }
                     break
                 default:
-                    println "Error: Invalid build tool. Must be 'maven', 'gradle', or 'ant'."
+                    error "Error: Invalid build tool. Must be 'maven', 'gradle', or 'ant'."
                     break
             }
             break
@@ -55,7 +55,7 @@ def call(Map config = [:]) {
                     sh "dotnet publish -c Release"
                     break
                 default:
-                    println "Error: Invalid artifact type. Must be 'dll' or 'exe'."
+                    error "Error: Invalid artifact type. Must be 'dll' or 'exe'."
                     break
             }
             break
@@ -68,7 +68,7 @@ def call(Map config = [:]) {
                             sh "npm run build"
                             break
                         default:
-                            println "Error: Invalid artifact type. Must be 'js'."
+                            error "Error: Invalid artifact type. Must be 'js'."
                             break
                     }
                     break
@@ -79,12 +79,12 @@ def call(Map config = [:]) {
                             sh "yarn run build"
                             break
                         default:
-                            println "Error: Invalid artifact type. Must be 'js'."
+                            error "Error: Invalid artifact type. Must be 'js'."
                             break
                     }
                     break
                 default:
-                    println "Error: Invalid build tool. Must be 'npm' or 'yarn'."
+                    error "Error: Invalid build tool. Must be 'npm' or 'yarn'."
                     break
             }
             break
