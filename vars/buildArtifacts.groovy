@@ -11,7 +11,7 @@ def call(Map config = [:]) {
                             sh "mvn clean install -Dmaven.test.skip=true -P war"
                             break
                         default:
-                            println "Error: Invalid artifact type. Must be 'jar' or 'war'."
+                            error "Error: Invalid artifact type. Must be 'jar' or 'war'."
                             break
                     }
                     break
