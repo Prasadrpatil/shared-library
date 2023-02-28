@@ -1,3 +1,4 @@
+dockerImage = ''
 def buildDockerImage(Map config = [:]) {  
       dockerImage = docker.build registry + ":$BUILD_NUMBER"
 }
