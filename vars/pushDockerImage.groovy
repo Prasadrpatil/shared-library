@@ -1,5 +1,6 @@
 def call(Map config = [:]) {
+       dockerImage=config.dockerImage
        docker.withRegistry( '', registryCredential ) {
-	       docker.image(${config.dockerImage}).push()
+	       docker.image(dockerImage).push()
 	}
 }
