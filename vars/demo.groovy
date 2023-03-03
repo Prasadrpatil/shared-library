@@ -1,4 +1,4 @@
 def call() {
   def script = libraryResource('demo.py')
-  sh "python ${script}"
+  sh "python3 ${script}"
 }
