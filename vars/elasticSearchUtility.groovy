@@ -1,4 +1,4 @@
-def call() {
+def dockerImageScan() {
 // sh 'pip3 install urllib3'
 pythonContent = libraryResource('dockerImageScan.py')
 
