@@ -47,6 +47,6 @@ with open('dockerfile-Scanningdump.json', 'r') as f:
      data = json.load(f)
 
 for doc in data:
-    res = es.index(index="docker-scanning", body=doc)
+    res = es.index(index="docker-file-scanning", body=doc)
     
 print("DATA IS PUSHED TO ELASTICSEARCH !!!")
