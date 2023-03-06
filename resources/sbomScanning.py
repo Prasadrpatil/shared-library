@@ -44,5 +44,5 @@ with open('snyk_dump.json', 'r') as f:
 for doc in data:
     res = es.index(index="sbom-scanning-index", body=doc)
     
-print(json.dumps(doc))
+print("DATA IS PUSHED TO ELASTICSEARCH !!!")
     
