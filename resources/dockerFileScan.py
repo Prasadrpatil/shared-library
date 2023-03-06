@@ -2,7 +2,7 @@ import json
 import os
 from elasticsearch import Elasticsearch
 
-with open('dockerfile-scan .json', 'r') as f:
+with open('dockerfile-scan.json', 'r') as f:
     # data1 = f.read().strip() 
     log_data = json.load(f)
 
