@@ -43,7 +43,7 @@ with open('dump_trivy.json','w') as f:
 #closing the opened file
 f.close()
 
-es = Elasticsearch(['http://3.208.12.113:9200'])
+es = Elasticsearch(['http://3.91.216.82:9200'])
 
 with open('dump_trivy.json', 'r') as f:
     # data1 = f.read().strip() 
