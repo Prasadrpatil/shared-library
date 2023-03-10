@@ -37,7 +37,7 @@ with open('k8s_manifest_scanning_dump.json','w') as f:
     json.dump(filtered_log_list,f)
 f.close()
 
-es = Elasticsearch(['http://3.91.216.82:9200'])
+es = Elasticsearch(['http://54.160.190.97:9200'])
 
 with open('k8s_manifest_scanning_dump.json', 'r') as f:
     # data1 = f.read().strip() 
